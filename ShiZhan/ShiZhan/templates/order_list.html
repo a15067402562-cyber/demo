@@ -1,0 +1,138 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="container">
+    <div style="margin-bottom: 10px;">
+        <a href="/order/create" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>添加
+        </a>
+        <a href="/order/delete" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>删除
+        </a>
+    </div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>数量</th>
+            <th>状态</th>
+            <th>用户ID</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in data_list %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.url}}</td>
+            <td>{{item.count}}</td>
+            <td><span class="label label-{{status_dict[item.status].cls}}">{{status_dict[item.status].text}}</span></td>
+            <td>{{item.real_name}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{%endblock%}
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<nav class="navbar navbar-default" style="border-radius: 0px;">-->
+<!--  <div class="container">-->
+<!--    &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+<!--    <div class="navbar-header">-->
+<!--      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
+<!--        <span class="sr-only">Toggle navigation</span>-->
+<!--        <span class="icon-bar"></span>-->
+<!--        <span class="icon-bar"></span>-->
+<!--        <span class="icon-bar"></span>-->
+<!--      </button>-->
+<!--      <a class="navbar-brand" href="#">订单平台</a>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+<!--    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--      <ul class="nav navbar-nav">-->
+<!--        <li class="active"><a href="#">用户管理<span class="sr-only">(current)</span></a></li>-->
+<!--        <li><a href="#">订单管理</a></li>-->
+<!--        <li class="dropdown">-->
+<!--          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a href="#">Action</a></li>-->
+<!--            <li><a href="#">Another action</a></li>-->
+<!--            <li><a href="#">Something else here</a></li>-->
+<!--            <li role="separator" class="divider"></li>-->
+<!--            <li><a href="#">Separated link</a></li>-->
+<!--            <li role="separator" class="divider"></li>-->
+<!--            <li><a href="#">One more separated link</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--      <ul class="nav navbar-nav navbar-right">-->
+<!--        <li class="dropdown">-->
+<!--          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{real_name}} <span class="caret"></span></a>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a href="#">Action</a></li>-->
+<!--            <li><a href="#">Another action</a></li>-->
+<!--            <li><a href="#">Something else here</a></li>-->
+<!--            <li role="separator" class="divider"></li>-->
+<!--            <li><a href="#">Separated link</a></li>-->
+<!--          </ul>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </div>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+<!--  </div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
+<!--</nav>-->
+
+
+<!--<div class="container">-->
+<!--    <div style="margin-bottom: 10px;">-->
+<!--        <a href="/order/create" class="btn btn-success">-->
+<!--            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>添加-->
+<!--        </a>-->
+<!--        <a href="/order/delete" class="btn btn-success">-->
+<!--            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>删除-->
+<!--        </a>-->
+<!--    </div>-->
+<!--    <table class="table table-striped">-->
+<!--    <thead>-->
+<!--        <tr>-->
+<!--            <th>ID</th>-->
+<!--            <th>URL</th>-->
+<!--            <th>数量</th>-->
+<!--            <th>状态</th>-->
+<!--            <th>用户ID</th>-->
+<!--        </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    {% for item in data_list %}-->
+<!--        <tr>-->
+<!--            <td>{{item.id}}</td>-->
+<!--            <td>{{item.url}}</td>-->
+<!--            <td>{{item.count}}</td>-->
+<!--            <td><span class="label label-{{status_dict[item.status].cls}}">{{status_dict[item.status].text}}</span></td>-->
+<!--            <td>{{item.real_name}}</td>-->
+<!--        </tr>-->
+<!--    {% endfor %}-->
+<!--    </tbody>-->
+<!--</table>-->
+<!--</div>-->
+
+
+
+
+
+<!--<script src="/static/jquery-3.7.1.js"></script>-->
+<!--<script src="/static/bootstrap-3.4.1-dist/js/bootstrap.js"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+
