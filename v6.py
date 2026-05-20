@@ -12,7 +12,7 @@ REDIS_CONN_PARAMS={
         "port":6379,
         "encoding":"utf-8",
     }
-REDIS_POOL=redis.ConnectionPool(**REDIS_CONN_PARAMS)
+REDIS_POOL=redis.ConnectionPool(**REDIS_CONN_PARAMS) #Redis连接池
 TASK_QUEUE="spider_task_list"
 RESULT_QUEUE="spider_result_list"
 
@@ -32,10 +32,6 @@ def task():
 
     return jsonify({"status":True,"data":tid,"message":"正在处理中，预计1分钟完成"})
 
-    encrypt_string=ordered_string+"74d89af48b654c8864d997da"
-    obj=hashlib.md5(encrypt_string.encode("utf-8"))
-    sign=obj.hexdigest()
-    return jsonify({"status":True,"data":sign})
 
 @app.route("/result",methods=["GET"])
 def result():

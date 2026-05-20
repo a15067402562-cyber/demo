@@ -1,0 +1,47 @@
+{%extends "layout.html"%}
+
+{%block content%}
+<div class="container">
+    <div style="margin-bottom: 10px;">
+        <a href="/user/create" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>添加
+        </a>
+        <a href="/user/delete" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>删除
+        </a>
+    </div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>mobile</th>
+            <th>real_name</th>
+            <th>role</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in user_list %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.real_name}}</td>
+            <td>
+<!--                {% if role == 2 %}-->
+<!--                <form action="/order/update_status" method="post" style="display:inline;">-->
+<!--                    <input type="hidden" name="id" value="{{item.id}}">-->
+<!--                    <select name="status" class="form-control" style="width:auto;display:inline-block;" onchange="this.form.submit()">-->
+<!--                        {% for status_id, status_info in status_dict.items() %}-->
+<!--                        <option value="{{status_id}}" {% if item.status == status_id %}selected{% endif %}>{{status_info.text}}</option>-->
+<!--                        {% endfor %}-->
+<!--                    </select>-->
+<!--                </form>-->
+<!--                {% else %}-->
+                {{role_dict[item.role]}}
+<!--                {% endif %}-->
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{%endblock%}

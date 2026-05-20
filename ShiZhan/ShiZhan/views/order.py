@@ -20,7 +20,7 @@ def order_list():
     }
     print(data_list)
 
-    return render_template("order_list.html",data_list=data_list,status_dict=status_dict,real_name=user_info["real_name"])
+    return render_template("order_list.html",data_list=data_list,status_dict=status_dict,real_name=user_info["real_name"],role=role)
 
 @od.route("/order/create",methods=["GET","POST"])
 def create_list():
@@ -33,7 +33,7 @@ def create_list():
     #写入数据库
     user_info = session.get("user_info")
     params=[url,count,user_info["id"]]
-    order_id=db.insert("insert into `order`(url,count,user_id,status) values (%s,%s,%s,1)",params)
+    order_id=db.idu("insert into `order`(url,count,user_id,status) values (%s,%s,%s,1)",params)
     print(order_id)
 
     #写入redis队列
@@ -45,5 +45,14 @@ def delete_list():
     if request.method=="GET":
         return render_template("order_delete.html")
     id=request.form.get("id")
-    db.delete("delete from `order` where id=%s", [id])
+    if not db.fetch_all("select * from `order` where id=%s",[id]):
+        return render_template("order_delete.html", error="无此id，删除失败")
+    db.idu("delete from `order` where id=%s", [id])
+    return redirect("/order/list")
+
+@od.route("/order/update_status", methods=["POST"])
+def update_status():
+    order_id = request.form.get("id")
+    status = request.form.get("status")
+    db.idu("update `order` set status=%s where id=%s", [status, order_id])
     return redirect("/order/list")

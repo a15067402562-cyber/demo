@@ -26,6 +26,8 @@ def create_app():
     app.register_blueprint(account.ac)
     from .views import order
     app.register_blueprint(order.od)
+    from .views import user
+    app.register_blueprint(user.us)
 
     app.before_request(auth)
     app.template_global()(get_real_name)

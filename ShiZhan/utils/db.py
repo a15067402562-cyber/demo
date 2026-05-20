@@ -32,7 +32,7 @@ def fetch_all(sql,params):
     conn.close()
     return result
 
-def insert(sql,params):
+def idu(sql,params):
     conn=POOL.connection()
     cursor=conn.cursor(cursor=cursors.DictCursor)
     cursor.execute(sql,params)
@@ -41,11 +41,3 @@ def insert(sql,params):
     conn.close()
     return cursor.lastrowid
 
-def delete(sql,params):
-    conn=POOL.connection()
-    cursor=conn.cursor(cursor=cursors.DictCursor)
-    cursor.execute(sql,params)
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return cursor.lastrowid

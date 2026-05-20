@@ -2,6 +2,9 @@
 
 {%block content%}
 <div class="container">
+    {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
     <div class="panel panel-default">
         <div class="panel-heading">Panel heading without title</div>
         <div class="panel-body">

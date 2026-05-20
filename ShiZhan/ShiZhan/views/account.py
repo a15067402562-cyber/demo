@@ -3,6 +3,11 @@ from utils import db
 
 ac=Blueprint('account',__name__)
 
+@ac.route('/')
+def index():
+    return redirect('/login')
+
+
 @ac.route('/login',methods=['GET','POST'])
 def login():
     if request.method=='GET':
